@@ -3,7 +3,9 @@
 * [이벤트 루프 (Event Loop)](#이벤트-루프-event-loop)
 * [함수 선언문 vs 함수 표현식](#함수-선언문-vs-함수-표현식)
 
+* [일급 객체](#일급-객체)
 
+  
 
 ## 이벤트 루프 (Event Loop)
 
@@ -160,3 +162,21 @@ var add = function add(x, y) {
 
 [[JavaScript] 함수선언문과 함수표현식의 차이](https://gmlwjd9405.github.io/2019/04/20/function-declaration-vs-function-expression.html)
 
+
+
+## 일급 객체
+
+일급 객체란 다음 조건을 만족하는 객체를 뜻한다.
+
+* 변수나 자료구조 (배열 등) 에 담을 수 있다.
+* 함수의 파라미터로 전달할 수 있다.
+* 함수의 반환값으로 사용할 수 있다.
+* 무명의 리터럴로 생성이 가능하다. (런타임에 생성이 가능하다)
+
+
+
+자바스크립트의 함수와 클래스도 일급 객체이다.
+
+### 참고
+
+[Javascript에서 왜 함수가 1급 객체일까요?](https://soeunlee.medium.com/javascript%EC%97%90%EC%84%9C-%EC%99%9C-%ED%95%A8%EC%88%98%EA%B0%80-1%EA%B8%89-%EA%B0%9D%EC%B2%B4%EC%9D%BC%EA%B9%8C%EC%9A%94-cc6bd2a9ecac)
