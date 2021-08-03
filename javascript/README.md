@@ -1,6 +1,7 @@
 # Javascript
 
 * [이벤트 루프 (Event Loop)](#이벤트-루프-event-loop)
+* [함수 선언문 vs 함수 표현식](#함수-선언문-vs-함수-표현식)
 
 
 
@@ -82,11 +83,80 @@ setTimeout
 
 ### 참고한 내용
 
- 모던 자바스크립트 Deep Dive 42장 비동기 프로그래밍
+ 모던 자바스크립트 Deep Dive 42장 - 비동기 프로그래밍
 
 [자바스크립트와 이벤트 루프](https://meetup.toast.com/posts/89)
 
 [어쨌든 이벤트 루프는 무엇입니까? 유튜브 영상](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
 
+
+## 함수 선언문 vs 함수 표현식
+
+### 함수 선언문
+
+일반적으로 프로그래밍 언어에서의 함수를 사용하는 방식과 동일하다. 함수 선언문은 **함수 이름을 생략할 수 없다.** 
+
+```javascript
+function add(x, y) {
+  return x + y;
+}
+```
+
+
+
+### 함수 표현식
+
+자바스크립트의 함수는 **객체 타입의 값이기 때문에 ** 변수에 할당해 사용할 수 있다. 변수에 함수를 할당시켜 놓은 값을 **함수 표현식**이라 한다.
+
+```javascript
+var add = function (x, y) {
+  return x + y;
+}
+```
+
+함수 표현식에서는 함수 리터럴의 함수 이름을 생략할 수 있다. 함수 표현식에서는 일반적으로 함수의 이름을 생략하지만 생략되지 않았을 경우 호출할 때는 **함수 이름이 아닌 함수 객체를 가리키는 식별자를 통해 호출**해야 한다. 함수 이름은 함수 몸체 내부에서만 유효한 식별자이기 때문이다.
+
+
+
+함수 이름이 생략되어 있는 함수 표현식을 **익명 함수 표현식**, 생략되어 있지 않은 함수 표현식을 **기명 함수 표현식**이라 한다.
+
+```javascript
+var add = function foo (x, y) {
+  return x + y;
+}
+
+console.log(add(2, 5)); // 7
+
+console.log(foo(2, 5)); // ReferenceError: foo is not defined
+```
+
+
+
+> 함수 이름은 함수 몸체 내부에서만 유효한 식별자인데, 함수 선언문은 어떻게 호출할 수 있을까?
+
+함수 이름은 함수 몸체 내부에서만 유효한 식별자이기 때문에 실질적으로 함수 선언문은 호출될 수 없어야 하는게 맞다. 하지만 자바스크립트 엔진은 함수를 호출하기 위해 **함수 이름과 동일한 식별자를 암묵적으로 생성하고, 해당 식별자에 함수를 할당한다.** 
+
+
+
+실질적으로 함수 선언문을 선언할 경우 다음과 같이 사용된다.
+
+```javascript
+function add(x, y) {
+  return x + y;
+}
+
+// 변환
+var add = function add(x, y) {
+  return x + y;
+}
+```
+
+
+
+### 참고한 내용
+
+ 모던 자바스크립트 Deep Dive 12장 - 함수
+
+[[JavaScript] 함수선언문과 함수표현식의 차이](https://gmlwjd9405.github.io/2019/04/20/function-declaration-vs-function-expression.html)
 
